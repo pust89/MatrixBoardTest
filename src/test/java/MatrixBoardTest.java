@@ -34,7 +34,7 @@ public static final String PASSWORD = "admin";
      }
 
      @Test //Аннотация Junit. Говорит, что этот метод - тестовый
-     public void loginTest(){
+     public void adminAccountTest(){
      driver.navigate().to("http://at.pflb.ru/matrixboard2/"); //перейти по URL
      //Найдем и сохраним элементы
       WebElement loginField = driver.findElement(By.id("login-username"));
@@ -47,10 +47,12 @@ public static final String PASSWORD = "admin";
 
       //отправим форму
        submitBtn.click();
-         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);//задержка
+         wait = new WebDriverWait(driver, 5);//задержка
+
          WebElement addPersonBtn = driver.findElement(By.id("add-person"));// админская кнопка "добавить человека"
          addPersonBtn.click();
-         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);//задержка
+         wait = new WebDriverWait(driver, 5);//задержка
+
          WebElement personDialog = driver.findElement(By.id("person-dialog"));// форма добавления нового человека
 
          if(personDialog.isDisplayed()){
